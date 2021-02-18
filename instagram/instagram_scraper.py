@@ -11,15 +11,15 @@ profile_url = 'https://www.instagram.com/ftn.privatni.casovi/'
 driver = webdriver.Chrome()
 
 
-def instagram_login():
+def instagram_login(username,password):
     driver.get(instagram_url)
     time.sleep(2)
 
     username = driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[1]/div/label/input')
     password = driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[2]/div/label/input')
 
-    username.send_keys("ftn.privatni.casovi")
-    password.send_keys("Terminator_96")
+    username.send_keys(username)
+    password.send_keys(password)
 
     driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[3]/button').click()
 
@@ -88,7 +88,7 @@ def get_numbers():
     return num_followers,num_following
 
 def main():
-    instagram_login()
+    instagram_login('','')
     get_profile_page()
     num_followers,num_following = get_numbers()
     followers = get_followers(num_followers)
